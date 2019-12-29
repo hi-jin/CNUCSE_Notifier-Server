@@ -20,7 +20,7 @@ public class DataListener extends Thread {
 	public DataListener(Socket client) {
 		this.client = client;
 		this.setName("client " + client.getInetAddress());
-		System.out.println(this.getName() + "접속");
+		System.out.println(this.getName() + "/ 접속");
 		
 		try {
 			out = new PrintWriter(new BufferedOutputStream(client.getOutputStream()));

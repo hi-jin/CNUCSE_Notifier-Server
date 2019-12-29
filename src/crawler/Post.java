@@ -26,7 +26,7 @@ public class Post implements Serializable {
 	@Override
 	public boolean equals(Object o) {
 		Post other = (Post) o;
-		if(this.title.equals(other.title) && this.link.equals(other.link)) {
+		if(this.link.equals(other.link)) {
 			return true;
 		}
 		return false;

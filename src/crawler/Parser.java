@@ -7,6 +7,7 @@ public class Parser {
 	private static ArrayList<Post> postList = new ArrayList<>();
 	
 	public static ArrayList<Post> parseAll() {
+		postList.clear();
 		parse("cseNotice");
 		parse("cseNews");
 		parse("cseProjectNews");

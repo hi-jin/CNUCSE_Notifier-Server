@@ -32,6 +32,7 @@ public class Main {
 					DataListener client = it.next();
 					try {
 						PrintWriter out = new PrintWriter(new BufferedOutputStream(client.client.getOutputStream()));
+						client.user.refreshPostList();
 						out.println("refresh");
 						out.flush();
 					} catch (IOException e) {
@@ -60,22 +61,6 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-	
-//	public static void main(String[] args) {
-//		FileIO.read();
-//		Thread autoSave = new Thread(() -> {
-//			FileIO.write();
-//			System.out.println("파일이 성공적으로 저장되었습니다.");
-//		});
-//		Runtime.getRuntime().addShutdownHook(autoSave);
-//		Parser.parseAll();
-//		FileIO.addUser(new User("ekwk1284"));
-//		User user = FileIO.login("ekwk1284");
-//		for(int i = 0; i < user.getMyPostList().size(); i++) {
-//			System.out.println(user.getMyPostList().get(i));
-//			System.out.println();
-//		}
-//	}
 	
 	public static Vector<DataListener> getCurrentUserList() {
 		return currentUserList;
