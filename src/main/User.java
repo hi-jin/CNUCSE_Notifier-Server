@@ -17,7 +17,7 @@ public class User implements Serializable {
 	
 	public User(String id) {
 		this.id = id;
-		this.postList = Parser.getPostList();
+		this.postList = (ArrayList<Post>) Parser.getPostList().clone();
 		myPostList = postList;
 	}
 	
