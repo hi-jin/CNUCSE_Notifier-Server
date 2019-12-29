@@ -3,8 +3,10 @@ package main;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Field;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -16,6 +18,15 @@ public class Main {
 	private static Vector<DataListener> currentUserList = new Vector<>();
 	
 	public static void main(String[] args) {
+		try {
+			System.setProperty("file.encoding","UTF-8");
+			Field charset = Charset.class.getDeclaredField("defaultCharset");
+			charset.setAccessible(true);
+			charset.set(null,null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		FileIO.read();
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
