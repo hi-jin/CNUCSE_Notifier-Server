@@ -6,13 +6,11 @@ public class Parser {
 
 	private static ArrayList<Post> postList = new ArrayList<>();
 	
-	public static ArrayList<Post> parseAll() {
+	public static void parseAll() {
 		postList.clear();
 		parse("cseNotice");
 		parse("cseNews");
 		parse("cseProjectNews");
-		
-		return postList;
 	}
 	
 	public static ArrayList<Post> getPostList() {

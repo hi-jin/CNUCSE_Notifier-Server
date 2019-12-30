@@ -10,25 +10,22 @@ import crawler.Post;
 public class User implements Serializable {
 
 	private String id;
-	private ArrayList<Post> postList = new ArrayList<>();
 	private ArrayList<Post> myPostList = new ArrayList<>();
 	private ArrayList<Post> removedPostList = new ArrayList<>();
 	private ArrayList<Post> checkedPostList = new ArrayList<>();
 	
 	public User(String id) {
 		this.id = id;
-		this.postList = (ArrayList<Post>) Parser.getPostList().clone();
-		myPostList = postList;
+		this.myPostList = (ArrayList<Post>) Parser.getPostList().clone();
 	}
 	
 	public void refreshPostList() {
-		this.postList = Parser.getPostList();
-		myPostList = postList;
+		this.myPostList = (ArrayList<Post>) Parser.getPostList().clone();
 		
 		Iterator<Post> it = removedPostList.iterator();
 		while(it.hasNext()) {
 			Post post = it.next();
-			if(!postList.contains(post)) {
+			if(!this.myPostList.contains(post)) {
 				removedPostList.remove(post);
 			}
 		}
